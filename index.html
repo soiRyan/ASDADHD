@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Self &amp; Other Evaluation — Neurodevelopmental Traits Checker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCREEN 1 — START
+  ══════════════════════════════════════════════════════════ -->
+  <div id="screen-start" class="screen active">
+    <div class="card">
+
+     <div class="logo-mark">
+  <img src="images/team.jpg" alt="logo">
+</div>
+
+      <span class="start-tag">Neurodevelopmental Tendencies Checker</span>
+
+      <h1 class="start-title">自己評価 &amp; 他者評価<br>特性チェック</h1>
+      <p class="start-subtitle">
+        自己評価と第三者の視点を組み合わせて
+        特性の傾向をチェックするツールです
+      </p>
+
+      <!-- Feature grid -->
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">📋</div>
+          <div class="info-label">質問数</div>
+          <div class="info-value">50問 · 6カテゴリー</div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">👥</div>
+          <div class="info-label">評価方式</div>
+          <div class="info-value">自己評価 + 他者評価</div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🔎</div>
+          <div class="info-label">信頼度チェック</div>
+          <div class="info-value">5種類の回答信頼性チェック</div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🔒</div>
+          <div class="info-label">プライバシー</div>
+          <div class="info-value">端末内のみで動作・データ送信なし</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <button class="btn-primary btn-full" onclick="startSelfEvaluation()">
+        自己評価を開始 →
+      </button>
+
+      <div class="clinic-link-wrap">
+  <a href="web.html" class="clinic-button">
+    心配な方はこちら → クリニックを見る
+  </a>
+</div>
+
+      <p class="start-disclaimer mt-12">
+⚠ このツールは<strong>医療診断を行うものではありません</strong>。
+結果は特性の傾向を示すものであり、医学的な判断や診断の根拠として使用することはできません。
+不安や気になる点がある場合は、医療機関や専門家に相談してください。
+</p>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCREEN 2 — QUESTION (shared by self & other phases)
+  ══════════════════════════════════════════════════════════ -->
+  <div id="screen-question" class="screen">
+    <div class="card">
+
+      <!-- Top bar -->
+      <div class="q-topbar">
+        <span id="phase-label" class="phase-label">自己評価</span>
+
+        <div class="q-controls">
+          <button id="back-btn" onclick="goBack()" style="visibility:hidden;">← 戻る</button>
+
+          <button id="exit-btn" class="exit-btn" onclick="showExitModal()">
+            終了
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <div id="progress-text" class="progress-text">1 / 57</div>
+      </div>
+
+      <!-- Category badge -->
+      <span id="category-badge" class="category-badge" data-cat="ADHD">⚡ ADHD 傾向</span>
+
+      <!-- Question -->
+      <p id="question-text" class="question-text">Loading…</p>
+
+      <!-- Scale labels -->
+      <div class="scale-labels">
+        <span>全く当てはまらない</span>
+        <span>あまり当てはまらない</span>
+        <span>どちらとも言えない</span>
+        <span>やや当てはまる</span>
+        <span>当てはまる</span>
+      </div>
+
+      <!-- Answer buttons (1–5) -->
+      <div class="answer-buttons">
+        <button class="answer-btn" data-value="1" onclick="selectAnswer(1)">
+          <span class="btn-num">1</span>
+          <span class="btn-label">全く当てはまらない</span>
+        </button>
+        <button class="answer-btn" data-value="2" onclick="selectAnswer(2)">
+          <span class="btn-num">2</span>
+          <span class="btn-label">あまり当てはまらない</span>
+        </button>
+        <button class="answer-btn" data-value="3" onclick="selectAnswer(3)">
+          <span class="btn-num">3</span>
+          <span class="btn-label">どちらとも言えない</span>
+        </button>
+        <button class="answer-btn" data-value="4" onclick="selectAnswer(4)">
+          <span class="btn-num">4</span>
+          <span class="btn-label">やや当てはまる</span>
+        </button>
+        <button class="answer-btn" data-value="5" onclick="selectAnswer(5)">
+          <span class="btn-num">5</span>
+          <span class="btn-label">当てはまる</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCREEN 3 — TRANSITION
+  ══════════════════════════════════════════════════════════ -->
+  <div id="screen-transition" class="screen">
+    <div class="card">
+
+      <div class="tr-icon">🤝</div>
+      <h2 class="tr-title">自己評価が完了しました</h2>
+      <p class="tr-body">
+        次に、この端末を <strong>友人・家族・パートナーなど</strong> あなたのことをよく知っている人に渡してください。 その方が <em>あなた</em>について同じ質問に回答します。
+      </p>
+
+      <ul class="tr-steps">
+        <li>この人について、<strong>実際に見て感じた印象</strong>をもとに回答してください。</li>
+        <li><strong>正直な印象</strong>で回答してください。正解・不正解はありません。</li>
+        <li>迷った場合は、観察していて<strong>最も近いと感じる選択肢</strong>を選んでください。</li>
+        <li>回答データは<strong>この端末内のみに保存</strong>され、外部へ送信されることはありません。</li>
+      </ul>
+
+      <button class="btn-primary btn-full" onclick="startOtherEvaluation()">
+        他者評価を開始 →
+      </button>
+      <button class="btn-ghost btn-full" onclick="finishSelfOnly()">
+  自己評価のみで結果を見る →
+</button>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCREEN 4 — RESULTS
+  ══════════════════════════════════════════════════════════ -->
+  <div id="screen-results" class="screen">
+    <div class="card">
+
+      <!-- Header -->
+      <div class="res-header">
+        <div class="res-title-row">
+          <span class="res-icon">📊</span>
+          <h2 class="res-main-title">診断結果</h2>
+        </div>
+        <p class="res-subtitle">
+          この結果は <em>特性の傾向を示すものであって</em>診断ではありません。
+        </p>
+
+        <!-- Legend -->
+        <div class="score-legend">
+          <span class="legend-item">
+            <span class="legend-dot self"></span> 自己評価 (緑)
+          </span>
+          <span class="legend-item">
+            <span class="legend-dot other"></span> 他者評価 (青)
+          </span>
+        </div>
+      </div>
+
+      <!-- ── Injected by result.js ─────────────────────────── -->
+      <div id="results-content"></div>
+      <!-- ───────────────────────────────────────────────────── -->
+
+      <!-- Safety disclaimer — always shown -->
+      <div class="safety-notice">
+        <div class="safety-title">⚠ 重要な注意</div>
+        <p>
+このツールは<strong>医療診断ではありません</strong>。
+結果は自己評価と他者評価に基づいた
+「特性の傾向」を示すものであり、
+専門的な診断の代わりにはなりません。
+
+もし結果によって不安や困りごとがある場合は、
+医療機関や専門家に相談することをおすすめします。
+</p>
+      </div>
+
+      <!-- Restart -->
+       <div class="clinic-link-wrap">
+  <a href="web.html" class="clinic-button">
+    結果が気になる方はこちら → 専門医に相談
+  </a>
+</div>
+      <div class="res-footer">
+        <button class="btn-ghost" onclick="restartApp()">↩ もう一度診断する</button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       EXIT MODAL
+  ══════════════════════════════════════════════════════════ -->
+  <div id="exit-modal-overlay" class="modal-overlay" onclick="handleOverlayClick(event)">
+    <div class="modal-card">
+      <div class="modal-icon">⏸</div>
+      <h2 class="modal-title">診断を中断しますか？</h2>
+      <p class="modal-body">
+        現在の回答データを使って結果を表示するか、<br>ホームに戻ることができます。
+      </p>
+
+      <div class="modal-actions">
+
+        <!-- Option 1: View results with current answers -->
+        <button class="modal-btn modal-btn-primary" onclick="exitToResults()">
+          <span class="modal-btn-icon">📊</span>
+          <span class="modal-btn-text">
+            <span class="modal-btn-label">診断結果を見る</span>
+            <span class="modal-btn-sub">これまでの回答で結果を表示</span>
+          </span>
+        </button>
+
+        <!-- Option 2: Return home -->
+        <button class="modal-btn modal-btn-ghost" onclick="exitToHome()">
+          <span class="modal-btn-icon">🏠</span>
+          <span class="modal-btn-text">
+            <span class="modal-btn-label">ホームに戻る</span>
+            <span class="modal-btn-sub">回答データをリセットして最初から</span>
+          </span>
+        </button>
+
+        <!-- Option 3: Cancel -->
+        <button class="modal-btn modal-btn-cancel" onclick="closeExitModal()">
+          キャンセル
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCRIPTS  (load order matters)
+       1. questions.js  — all data & config
+       2. result.js     — scoring & result rendering
+       3. script.js     — app controller
+  ══════════════════════════════════════════════════════════ -->
+  <script src="questions.js"></script>
+  <script src="result.js"></script>
+  <script src="script.js"></script>
+
+  <!--
+    TIMING FIX:
+    The self-phase elapsed time is recorded when endSelfPhase() is called.
+    We patch it here after all scripts load so selfElapsed is captured correctly.
+  -->
+  <script>
+    (function() {
+      const _orig = endSelfPhase;
+      window.endSelfPhase = function() {
+        selfElapsed = Math.round((Date.now() - phaseStart) / 1000);
+        _orig();
+      };
+    })();
+  </script>
+
+</body>
+</html>

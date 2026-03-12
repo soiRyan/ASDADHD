@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>チーム障害者メンタルクリニック</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web.css">
+</head>
+<body>
+
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">チーム障害者メンタルクリニック<span>Team Crazy Mental Clinic</span></div>
+  <button class="nav-menu-btn" id="menuBtn" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="#" onclick="showPage('home')" class="nav-link active" data-page="home"><span class="nav-icon">🏠</span>ホーム</a>
+  <a href="#" onclick="showPage('clinic')" class="nav-link" data-page="clinic"><span class="nav-icon">🏥</span>クリニック紹介</a>
+  <a href="#" onclick="showPage('doctors')" class="nav-link" data-page="doctors"><span class="nav-icon">👨‍⚕️</span>医師紹介</a>
+  <a href="#" onclick="showPage('appointment')" class="nav-link" data-page="appointment"><span class="nav-icon">📅</span>ご予約</a>
+  <a href="#" onclick="showPage('access')" class="nav-link" data-page="access"><span class="nav-icon">📍</span>アクセス</a>
+  <a href="#" onclick="showPage('faq')" class="nav-link" data-page="faq"><span class="nav-icon">❓</span>よくある質問</a>
+</div>
+
+<!-- ══════ HOME ══════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-shapes"></div>
+    <div class="hero-content hero-parallax">
+      <div class="hero-badge"><span class="hero-dot"></span>初診受付中</div>
+      <h1>チーム障害者<br>メンタルクリニック</h1>
+      <div class="hero-quote">「ようこそ、君も障害者界のアベンジャーズだ！」</div>
+      <p class="hero-sub">東京都東村山市 ・ 精神科・心療内科<br>心の健康を、チームでサポートします。</p>
+      <div class="hero-btns">
+        <button class="btn-white" onclick="showPage('appointment')">📅 予約する</button>
+        <button class="btn-ghost" onclick="showPage('clinic')">診療案内</button>
+        <button class="btn-white" onclick="showPage('doctors')" style="font-size:13px;padding:11px 18px;">👥 7人の医師を見る</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice-bar reveal"><span style="font-size:16px;flex-shrink:0;">📢</span><span>初診の方はお電話またはウェブ予約をご利用ください。当日予約も受け付けております（空き状況によります）。</span></div>
+
+  <div class="section-header reveal">
+    <span class="section-label">診療内容</span>
+    <h2 class="section-title">こころの専門医として<br>幅広く対応しています</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-delay-1"><div class="service-icon">
+         <img src="images/jo.jpg">
+    </div>
+    <div class="service-name">精神科</div><div class="service-desc">うつ・統合失調症など精神疾患全般に対応</div></div>
+    <div class="service-card reveal reveal-delay-2"><div class="service-icon">
+         <img src="images/utsu.jpg">
+    </div>
+    <div class="service-name">発達特性外来</div><div class="service-desc">発達障害に関する相談・診断・支援</div></div>
+    <div class="service-card reveal reveal-delay-3"><div class="service-icon">
+         <img src="images/ari.jpg">
+    </div>
+    <div class="service-name">ADHD</div><div class="service-desc">注意欠如・多動症の診断と薬物療法</div></div>
+    <div class="service-card reveal reveal-delay-4"><div class="service-icon">
+         <img src="images/pin.jpg">
+    </div>
+    <div class="service-name">ASD</div><div class="service-desc">自閉スペクトラム症の診断と生活支援</div></div>
+    <div class="service-card reveal reveal-delay-1"><div class="service-icon">
+         <img src="images/take.jpg">
+    </div>
+    <div class="service-name">不安障害</div><div class="service-desc">パニック・社交不安などの治療</div></div>
+    <div class="service-card reveal reveal-delay-2"><div class="service-icon">
+         <img src="images/go.jpg">
+    </div>
+    <div class="service-name">うつ症状</div><div class="service-desc">抑うつ状態の早期発見と回復サポート</div></div>
+  </div>
+
+  <!-- DOCTORS TEASER -->
+  <div class="doctors-teaser">
+    <div class="doctors-teaser-card reveal">
+      <h3>👨‍⚕️ 専門医チーム</h3>
+      <p>7名の経験豊富な専門医が連携して、患者さま一人ひとりに最適な治療を提供しています。</p>
+      <div class="mini-avatars" id="miniAvatars"></div>
+      <button class="btn-white" style="background:var(--blue-dark);color:white;border:none;padding:13px 32px;font-size:14px;border-radius:100px;font-weight:700;width:100%;max-width:280px;justify-content:center;" onclick="showPage('doctors')">
+        7人の医師を見る →
+      </button>
+    </div>
+  </div>
+
+  <div class="intro-section">
+    <div class="intro-inner reveal">
+      <h3>🏥 クリニックについて</h3>
+      <p>チーム障害者メンタルクリニックは、東京都東村山市に2018年に開設した精神科・心療内科専門クリニックです。</p>
+      <p>「君も障害者界のアベンジャーズだ！」を合言葉に、経験豊富な医師チームが患者さま一人ひとりに寄り添った丁寧な診療を提供しています。</p>
+      <p>お子さまから高齢者まで、幅広い年代の方々のこころの健康をサポートしています。</p>
+      <div style="margin-top:16px;text-align:right;"><button onclick="showPage('clinic')" style="background:var(--blue-dark);color:white;border:none;border-radius:100px;padding:11px 20px;font-size:13px;font-weight:700;cursor:pointer;">詳しく見る →</button></div>
+    </div>
+  </div>
+
+  <div class="features-wrap">
+    <div class="section-header" style="padding:0 0 24px;">
+      <span class="section-label">選ばれる理由</span>
+      <h2 class="section-title">私たちの強み</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="feature-item reveal"><div class="feature-icon-wrap">👥</div><div class="feature-text"><h4>7名の専門医チーム</h4><p>複数の専門医が連携して治療方針を検討。より適切な診断と治療を実現します。</p></div></div>
+    <div class="feature-item reveal reveal-delay-1"><div class="feature-icon-wrap">🔒</div><div class="feature-text"><h4>プライバシーの徹底保護</h4><p>個室での診察と厳格な個人情報管理により、安心してご相談いただける環境を整えています。</p></div></div>
+    <div class="feature-item reveal reveal-delay-2"><div class="feature-icon-wrap">🚃</div><div class="feature-text"><h4>駅から徒歩5分</h4><p>東村山駅から徒歩5分。アクセスしやすい立地で、通院の負担を軽減します。</p></div></div>
+    <div class="feature-item reveal reveal-delay-3"><div class="feature-icon-wrap">💳</div><div class="feature-text"><h4>保険診療対応</h4><p>健康保険・自立支援医療制度に対応。金銭的な不安なく治療に専念できます。</p></div></div>
+  </div>
+
+  <div class="info-strip reveal">
+    <div class="info-item"><span class="info-icon">📍</span><div class="info-text"><strong>所在地</strong><span>東京都東村山市青葉町3-31-1</span></div></div>
+    <div class="info-item"><span class="info-icon">📞</span><div class="info-text"><strong>お電話</strong><span><a href="tel:0423995678" style="color:white;">042-399-5678</a></span></div></div>
+    <div class="info-item"><span class="info-icon">⏰</span><div class="info-text"><strong>診療時間</strong><span>月火水金 10:00〜18:00 / 木 12:00〜20:00 / 土 10:00〜14:00</span></div></div>
+  </div>
+  <div id="footer-home"></div>
+</div>
+
+<!-- ══════ CLINIC ══════ -->
+<div class="page" id="page-clinic">
+  <div class="page-hero">
+    <span class="section-label">クリニック紹介</span>
+    <h2 class="section-title">私たちについて</h2>
+  </div>
+  <div style="padding:24px 16px 0;">
+    <div class="clinic-card reveal">
+      <h3>📝 院長メッセージ</h3>
+      <p>このたびは、チーム障害者メンタルクリニックのホームページをご覧いただき、誠にありがとうございます。院長の阿部 巧真です。</p>
+      <p>「こころの病気」は、誰にでも起こりうるものです。私もゴキブリと呼ばれ、殴られ蹴られ、おっぱいをニヤミスし、挙げ句の果てには告白した返事が返ってきません。当クリニックでは、受診の敷居をできる限り低くし、一人でも多くの方が早期に適切なサポートを受けられる環境づくりに努めています。</p>
+      <p>「君も、障害者界のアベンジャーズだ！」——この言葉を胸に、スタッフ一同、患者さまに寄り添い続けます。どうぞ、気軽にご相談ください。</p>
+      <div style="margin-top:14px;text-align:right;font-size:13px;color:var(--text-light);">院長　阿部 巧真</div>
+    </div>
+    <div class="clinic-card reveal">
+      <h3>🌿 クリニック理念</h3>
+      <p><strong style="color:var(--blue-dark);">「共に歩む、こころの医療」</strong></p>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px;">
+        <div style="background:var(--light-blue);border-radius:10px;padding:14px;font-size:13px;"><strong style="color:var(--blue-dark);">① 傾聴と共感</strong><br><span style="color:var(--text-light);font-size:12px;">患者さまの声に耳を傾け、感情に寄り添った診療を行います。</span></div>
+        <div style="background:var(--light-blue);border-radius:10px;padding:14px;font-size:13px;"><strong style="color:var(--blue-dark);">② 科学的根拠に基づく治療</strong><br><span style="color:var(--text-light);font-size:12px;">最新のエビデンスに基づいた違法薬物療法・精神療法を提供します。</span></div>
+        <div style="background:var(--light-blue);border-radius:10px;padding:14px;font-size:13px;"><strong style="color:var(--blue-dark);">③ 地域との連携</strong><br><span style="color:var(--text-light);font-size:12px;">地域の医療機関・支援機関と連携し、包括的なサポートを提供します。</span></div>
+      </div>
+    </div>
+    <div class="clinic-card reveal">
+      <h3>🏨 院内紹介</h3>
+      <p>患者さまがリラックスして過ごせるよう、院内BGMに有川のバンド「Jellow Glow」の楽曲を使用し、全室バリアフリーで静かな院内環境を整えています。</p>
+     <div class="facility-grid">
+
+  <div class="facility-item">
+    <div class="fi-icon">
+      <img src="images/Room.PNG">
+    </div>
+    待合室
+  </div>
+
+  <div class="facility-item">
+    <div class="fi-icon">
+      <img src="images/Dr.PNG">
+    </div>
+    個室診察室×5
+  </div>
+
+  <div class="facility-item">
+    <div class="fi-icon">
+      <img src="images/Free.PNG">
+    </div>
+    バリアフリー設計
+  </div>
+
+  <div class="facility-item">
+    <div class="fi-icon">
+      <img src="images/Park.PNG">
+    </div>
+    提携駐車場
+  </div>
+
+  <div class="facility-item">
+    <div class="fi-icon">
+      <img src="images/Bathroom.PNG">
+    </div>
+    多目的トイレ
+  </div>
+
+  <div class="facility-item">
+    <div class="fi-icon">
+      <img src="images/Wifi.WEBP">
+    </div>
+    Free Wi-Fi
+  </div>
+
+</div>
+    </div>
+    <div class="clinic-card reveal" style="margin-bottom:40px;">
+      <h3>📋 初診の流れ</h3>
+      <div style="display:flex;flex-direction:column;">
+        <div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--gray);"><div style="width:32px;height:32px;background:var(--blue-dark);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">1</div><div><strong style="font-size:13px;">ご予約</strong><p style="font-size:12px;color:var(--text-light);margin-top:3px;">お電話またはウェブからご予約ください。</p></div></div>
+        <div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--gray);"><div style="width:32px;height:32px;background:var(--blue-dark);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">2</div><div><strong style="font-size:13px;">来院・受付</strong><p style="font-size:12px;color:var(--text-light);margin-top:3px;">保険証・お薬手帳をお持ちください。</p></div></div>
+        <div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--gray);"><div style="width:32px;height:32px;background:var(--blue-dark);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">3</div><div><strong style="font-size:13px;">問診票記入</strong><p style="font-size:12px;color:var(--text-light);margin-top:3px;">症状や気になることを記入していただきます。</p></div></div>
+        <div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--gray);"><div style="width:32px;height:32px;background:var(--blue-dark);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">4</div><div><strong style="font-size:13px;">診察</strong><p style="font-size:12px;color:var(--text-light);margin-top:3px;">医師が丁寧に問診・診察を行います（約30分）。</p></div></div>
+        <div style="display:flex;gap:14px;padding:12px 0;"><div style="width:32px;height:32px;background:var(--blue-dark);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">5</div><div><strong style="font-size:13px;">会計・処方</strong><p style="font-size:12px;color:var(--text-light);margin-top:3px;">お薬が必要な場合は処方箋をお渡しします。</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="footer-clinic"></div>
+</div>
+
+<!-- ══════ DOCTORS ══════ -->
+<div class="page" id="page-doctors">
+  <div class="page-hero">
+    <span class="section-label">医師紹介</span>
+    <h2 class="section-title">専門医チーム</h2>
+    <p>7名の専門医が連携してサポートします</p>
+  </div>
+  <div class="doctors-list" id="doctorsList"></div>
+  <div id="footer-doctors"></div>
+</div>
+
+<!-- ══════ APPOINTMENT ══════ -->
+<div class="page" id="page-appointment">
+  <div class="page-hero">
+    <span class="section-label">ご予約</span>
+    <h2 class="section-title">診察のご予約</h2>
+  </div>
+  <div class="appt-section">
+    <div class="appt-tabs">
+      <div class="appt-tab active" onclick="switchTab('form',this)">📝 予約フォーム</div>
+      <div class="appt-tab" onclick="switchTab('cal',this)">📅 日程選択</div>
+    </div>
+    <div class="appt-panel active" id="appt-form">
+      <div class="form-group"><label>お名前 <span>必須</span></label><input type="text" class="form-control" placeholder="山田 太郎" id="f-name"></div>
+      <div class="form-group"><label>電話番号 <span>必須</span></label><input type="tel" class="form-control" placeholder="090-1234-5678" id="f-tel"></div>
+      <div class="form-group"><label>メールアドレス</label><input type="email" class="form-control" placeholder="example@email.com"></div>
+      <div class="form-group"><label>希望日 <span>必須</span></label><input type="date" class="form-control" id="f-date"></div>
+      <div class="form-group"><label>希望時間帯</label><select class="form-control"><option value="">選択してください</option><option>午前（10:00〜12:00）</option><option>午後（13:00〜16:00）</option><option>夕方（16:00〜18:00）</option><option>夜間（木曜 18:00〜20:00）</option></select></div>
+      <div class="form-group"><label>初診・再診</label><select class="form-control"><option>初診</option><option>再診</option></select></div>
+      <div class="form-group"><label>ご相談内容</label><textarea class="form-control" placeholder="症状やご相談内容を簡単にお書きください..."></textarea></div>
+      <button class="submit-btn" onclick="submitForm()">予約を送信する</button>
+      <div class="success-msg" id="successMsg"><div class="check">✅</div><h4>予約を受け付けました</h4><p>ご予約ありがとうございます。<br>担当スタッフより確認のご連絡をさしあげます。<br>電話番号：042-399-5678</p></div>
+      <div style="margin-top:20px;background:var(--light-blue);border-radius:10px;padding:14px;font-size:12px;color:var(--text-light);line-height:1.8;"><strong style="color:var(--blue-dark);display:block;margin-bottom:6px;">📞 お電話でのご予約</strong><a href="tel:0423995678" style="font-size:16px;font-weight:700;color:var(--blue-dark);display:block;">042-399-5678</a>受付時間：診療時間中</div>
+    </div>
+    <div class="appt-panel" id="appt-cal">
+      <div class="calendar-wrap" id="calendarWrap"></div>
+      <div style="margin-top:14px;padding:14px;background:var(--light-blue);border-radius:10px;font-size:12px;color:var(--text-light);line-height:1.8;"><strong style="color:var(--blue-dark);display:block;margin-bottom:4px;">ご注意</strong>日曜・祝日は休診です。木曜の診療は12:00〜20:00です。<br>ご希望の日程を選択後、お電話でご確認ください。</div>
+    </div>
+  </div>
+  <div id="footer-appointment"></div>
+</div>
+
+<!-- ══════ ACCESS ══════ -->
+<div class="page" id="page-access">
+  <div class="page-hero">
+    <span class="section-label">アクセス</span>
+    <h2 class="section-title">クリニックへのご案内</h2>
+  </div>
+  <div class="access-section">
+    <div class="access-card reveal"><h3>📍 所在地・連絡先</h3><p><strong>〒189-0001</strong><br>東京都東村山市青葉町3-31-1<br><br><a href="tel:0423995678" style="font-size:18px;font-weight:700;color:var(--blue-dark);">📞 042-399-5678</a></p></div>
+    <div class="access-card reveal"><h3>⏰ 診療時間</h3><table class="hours-table"><tr><td>月・火・水・金</td><td>10:00 〜 18:00</td></tr><tr><td>木曜日</td><td>12:00 〜 20:00</td></tr><tr><td>土曜日</td><td>10:00 〜 14:00</td></tr><tr><td class="closed">日曜・祝日</td><td class="closed">休診</td></tr></table><p style="margin-top:10px;font-size:11px;color:var(--gray-mid);">※受付は診療終了30分前まで</p></div>
+    <div class="access-card reveal"><h3>🚃 交通アクセス</h3><p>西武新宿線・西武拝島線「<strong>東村山駅</strong>」東口より徒歩約5分</p><div style="margin-top:10px;background:var(--gray-light);border-radius:8px;padding:12px;font-size:12px;color:var(--text-light);">🅿️ お車でお越しの方：近隣の提携駐車場をご利用ください（最大2時間無料）</div></div>
+    <div class="reveal"><div class="map-wrap"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.2!2d139.4724!3d35.7548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018e8e8e8e8e8e8%3A0x0!2z5p2x5Lqs6YO95p2x5p2l5bGx5biC6Z2S6JGJ55S677yT5LiB55uu77yZ77yQ!5e0!3m2!1sja!2sjp!4v1620000000000" allowfullscreen="" loading="lazy"></iframe></div><p style="font-size:11px;color:var(--gray-mid);text-align:center;padding:8px;">東京都東村山市青葉町3-31-1</p></div>
+  </div>
+  <div id="footer-access"></div>
+</div>
+
+<!-- ══════ FAQ ══════ -->
+<div class="page" id="page-faq">
+  <div class="page-hero">
+    <span class="section-label">よくある質問</span>
+    <h2 class="section-title">FAQ</h2>
+  </div>
+  <div class="faq-section" id="faqList"></div>
+  <div id="footer-faq"></div>
+</div>
+
+<!-- ══════ DOCTOR MODAL ══════ -->
+<div class="modal-overlay" id="doctorModal" onclick="bgClose(event)">
+  <div class="modal-sheet" id="modalSheet">
+    <div class="modal-handle" onclick="closeModal()"></div>
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="web.js"></script>
+</body>
+</html>
